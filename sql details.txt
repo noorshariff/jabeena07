@@ -1,0 +1,197 @@
+1.cmd to see database?
+->show databases;(to see wt r databases are present)
+2.cmd to create database?
+->create databases tyss;
+3.How to use database?
+->use tyss;
+4.cmd to see tables?
+->show tables;
+5.How to create table?
+->create table student(id int,name varchar(120),emailId varchar(150));
+6.how to check table structure?
+-> desc student;
+7.how to drop table?
+->drop table student;
+8.how to drop database?
+->drop database database_name;
+9.how to alter table?
+->alter table student add address varchar(120);  //with column keyword also we can use
+10.How to drop table?
+->drop table table_name;
+11.How to drop column ?
+->alter table table_name
+drop column column_name;
+11.how to see table details?
+-->select * from table;
+13.update the details?
+--> update student_info set mobilenum=1234;
+14.how to delete?
+-->delete from student_info;
+15.how to truncate?
+-->truncate table table_name;
+16.how to select particular columns as o/p?
+-->select id,studentname from table_name;
+17.WAQ to select all the details based on particular name?
+--> select * from student_info where studentname='jabeena';
+18.how to create a table using constraints?
+--?create table emp(id int,name varchar(123) not null,emailId varchar(432),primary key(id));
+
+19.Waq to display all the employee who is working in deptid 30 only if sal is greater than 10000 and less than 25000 including 10,000 and 25000
+20.WAQ to display all the records who is working as a S/W develper and DOB is 1994
+21.WAQ to display who is working in dept 10 or 30?
+-->select * from employee where deptid IN(10,20,30);
+
+22.WAQ to display all the employee detail whose designation is tester,HR ,Analyst?
+-->select * from employee where designation IN('HR','clerk','analyst');
+
+23.WAQ to display all the employees details who are working as a clerk in dept 20,30,40,60,70?
+--> select * from employee where designation='clerk' and deptid in(20,30,40,60,70);
+
+24.WAQ to display all the employee details excluding deptid(20,30,40,60,70)?
+-->
+
+25. WAQ to display all the employee details who are working deptid 20,30,40 excluding salesman or analyst?
+-->select * from employee where deptid in(20,30,40) and designation not in('salesman','analyst');
+
+26.WAQ to display all the detail of emplyee whose salary in the range of 20,000 to 50,000?
+-->select * from employee where Salary between 10000 and 50000;
+
+27.Waq to display all the details of employee who hired during 2017?
+--> select * from employee where DOJ between '2017-01-01' and '2017-12-30';
+
+28.WAQ to display all the records of employee exclding who is hired in 2019?
+--> select * from employee where DOJ not between '2019-01-01' and '2019-08-14';
+
+29.WAQ to display employee name,salary and deptid of all the employees who is working in dept 10 or 20 excluding employee whose salary is greater than or equal to 15000 and salary is less than equal to 50,000?
+-->select name,salary from employee where deptid in(10,20) and salary not between 15000 and 50000;
+
+30.WAQ to display employee name ,annual sal if his designation is null?
+-->select name,salary*12 from employee where designation is null;
+
+Note:
+Is Not:select * from employee where designation is not null;
+
+31.WAQ to display all the detail of employee whose name starts with 's'
+-->select * from employee where name like 's%';
+
+32.WAQ to display all the details of employee whose name contain only 5 characters?
+-->select * from employee where name like '_____';
+
+33.WAQ to display name,sal,dob,doj,age whose name starts with s and end with s?
+select name,salary,dob,doj,age from employee where name like 's%s';
+
+34.WAQ to display all the record of employee whose second char is a?
+--> select * from employee where name like '_a%';
+
+35.WAQ to dispaly all the details where designation atleast two times e?
+-->select * from employee where designation like '%e%e%';
+
+36.Select all the strings of length 5 and whose first char stars with s and second last char should be l?
+-->select * from employee where name like 's__l_';
+
+37.Waq to display all the details of employee if the name of employee starts with r char or z char?
+-->select * from employee where name like 's%' or name like 'z%';
+
+38.WAQ to display all the record of employee whose name third char is c and 6th char is i?
+-->select * from employee where name like '__c__i%';
+
+39.WAQ to display excluding whose name stars with a?
+-->select * from employee where name not like 'a%';
+
+40.WAQ to display avg sal of employee?
+-->select avg(salary) from employee;
+
+41.WAQ to display min,max,sal of all the employees?
+-->select min(salary) as min_sal ,max(salary) as max_sal,avg(salary) as avg_sal,count(salary) from employee;
+or ------ select min(salary)  min_sal ,max(salary)  max_sal,avg(salary)  avg_sal,count(salary) count from employee;
+
+42.Waq to display number of empoyee having doj after 2016?
+--> select count(*) from employee where DOJ>'2016-12-31';
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+43.WAQ to display avg sal and hightest sal of 20,30,40,60?
+--> select avg(salary),max(salary) from employee where deptid in(20,30,40,60);
++-------------+-------------+
+| avg(salary) | max(salary) |
++-------------+-------------+
+|  60666.6667 |      150000 |
++-------------+-------------+
+45.WAQTD date of first and last hired employee?
+--> select min(DOJ) firsthired,max(DOJ) lasthired from employee;
++------------+------------+
+| firsthired | lasthired  |
++------------+------------+
+| 2000-06-19 | 2019-06-19 |
++------------+------------+
+
+46.WAQTD the column in upper and lower case?
+-->select upper(name) uppercase,lower(name) lowercase from employee;
+
+47.WAQTD the length of a name?
+-->select name, length(name) from employee;
+
+48.WAQ to merge salary and name?
+-->select concat(name,salary) from employee;
+
+49.WAQ to display reverse of string?
+--> select reverse(name) from employee;
+
+50.WAQTD the name of all the employee only 3 character?
+-->select substr(name,1,3) from employee;
+
+51.WAQTD all the employee whose name begins with consonent?
+--> select * from employee where substr(name,1,1) not in('a','e','i','o','u');
+
+52.WAQto search the position of 'a' in name column?
+-->select instr(name,'a') from employee;
+
+53.WAQ to replace where a is present ,z has to be replace?
+-->select replace(name,'a','z') from employee;
+
+54.WAQ to display number of employee who is working in deptid 20 and sal>15000?
+-->select count(*) from employee where deptid=20 and salary>15000;
+
+56.WAQtd highest sal of employee in each dept?
+-->select max(salary) from employee group by deptid;
+
+57.WAQ to display num of s/w developer working in each dept?
+--> select count(designation) from employee where designation='software developer'group by deptid;
+
+58.WAQTD no of employee hired on each date?
+-->select count(*) from employee group by DOJ;
+
+60.WAQTD min salary in each designation?
+--> select min(salary) from employee group by designation;
+
+61.WAQTD dept which has atleast 4 working employees?
+--> select deptid from employee group by deptid having count(*)<=4;
+
+62.WAQTD deptid which has total sal>20000?
+--> select deptid from employee group by deptid having sum(salary)>20000;
+
+63.WAQTD dept no and avg sal of all the dept whose avg sal is>20000 excluding the employee whose name begins with s?
+--> select deptid,avg(salary) from employee where name not like 's%' group by deptid having avg(salary)>20000;
+
+64.WAQTD emp name,designation doj for all the emp either working in any of the deptid 10,20,50,60 and sort in descending order of their sal?
+-->select name,designation,DOJ from employee where deptid in(10,20,50.60) order by salary desc;
+
+65.WAQTD dept id along with no of emp in it?
+--> select deptid,count(*) from employee group by deptid;
+
+66.WAQTD all the detail of employee whose designation is tester and s/w developer?
+-->
+
+67.WAQTD name of the employee who is working research dept?
+68.WAQTD name of employee who is working in location which has atleat one 'a' char in his name
+69.WAQT obtain 2nd max sal from the emp_info table?
+--> select max(salary) from employee where salary<(select max(salary) from employee);
+70.WAQTD the 3rd max sal?
+-->select max(salary) from employee where salary<(select max(salary) from employee where salary<(select max(salary) from employee));
+
+71.WAQTD all the records using cartessian join?
+-->
+64. WAQTD of employee table sal should be arrange in desc order?
+-->
